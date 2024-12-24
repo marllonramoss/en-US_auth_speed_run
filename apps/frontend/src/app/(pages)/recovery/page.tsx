@@ -1,9 +1,10 @@
+import RecoveryForm from "@/components/auth/RecoveryForm";
 import React from "react";
 
 const page = () => {
   return (
-    <div>
-      <span>Recovery Page</span>
+    <div className="">
+      <RecoveryForm />
     </div>
   );
 };
