@@ -25,16 +25,20 @@ export class UserRegister {
 
         const hashedPassword = await this.passwordHasher.hash(password);
 
-        const idGenerated = await this.idGenerator.generate();
+        const idGenerated = this.idGenerator.generate();
 
         const newUser = new User(idGenerated, name, email, hashedPassword);
-        await this.userRepository.save(newUser);
 
-        return {
-            id: newUser.id,
-            name: newUser.name,
-            email: newUser.email,
-        };
+        const savedUser = await this.userRepository.save(newUser);
+
+        const userFromDb = await this.userRepository.findByEmail(email);
+
+        const isHashValid = await this.passwordHasher.compare(
+            password,
+            userFromDb.password,
+        );
+
+        return savedUser;
     }
 
     private validateInput(name: string, email: string, password: string) {
