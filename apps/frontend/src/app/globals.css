@@ -27,5 +27,8 @@ body {
     @apply max-w-7xl mx-auto p-4;
   }
   
+  .input-error {
+    @apply ring-1 ring-red-950;
+  }
 
 }
