@@ -65,7 +65,10 @@ const LoginForm = () => {
         />
       </div>
       <div className="flex justify-end mt-1">
-        <Link href="#" className="text-lg text-[#979797] -tracking-tight">
+        <Link
+          href="/recovery"
+          className="text-lg text-[#979797] -tracking-tight"
+        >
           Forgot password?
         </Link>
       </div>
